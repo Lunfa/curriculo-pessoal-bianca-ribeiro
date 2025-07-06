@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Totem de Descarte Inteligente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      padding: 30px;
+    }
+    h1, h2 {
+      color: #2b7a2b;
+    }
+    .info {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+    .hidden {
+      display: none;
+    }
+    .sticker {
+      width: 100px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .face {
+      font-size: 40px;
+      margin: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="telaInicial">
+    <h1>Bem-vindo ao Game Totem 🎮</h1>
+    <button onclick="iniciarJogo()">Entrar</button>
+  </div>
+
+  <div id="telaJogo" class="hidden">
+    <h1>Gamificação do Descarte</h1>
+    <div class="info" id="pontos">Pontos: 0</div>
+    <div class="info" id="nivel">Nível: 1</div>
+
+    <button onclick="jogarLixo('correto')">Jogar lixo reciclável</button>
+    <button onclick="jogarLixo('organico')">Jogar lixo orgânico</button>
+    <button onclick="jogarLixo('errado')">Jogar lixo errado</button>
+
+    <div class="info" id="mensagem"></div>
+    <div id="jogosExtras" class="hidden">
+      <button onclick="interagirJogo('caca')">Caça Lixo</button>
+      <button onclick="interagirJogo('combine')">Combine o Lixo</button>
+    </div>
+    <div id="btnAdesivo" class="hidden">
+      <button onclick="mostrarAdesivos()">Pegue seu adesivo</button>
+    </div>
+  </div>
+
+  <div id="telaAdesivos" class="hidden">
+    <h2>Escolha seu adesivo:</h2>
+    <img src="download.jpeg" alt="Adesivo chorando fofo" class="sticker" onclick="adesivoSelecionado()">
+    <img src="fluffy.jpeg" alt="Adesivo raposa feliz" class="sticker" onclick="adesivoSelecionado()">
+    <img src="snoopy.jpeg" alt="Adesivo bravo fofo" class="sticker" onclick="adesivoSelecionado()">
+    <div id="botoesAposAdesivo" class="hidden">
+      <button onclick="reiniciarJogo()">Voltar</button>
+      <button onclick="mostrarTelaFinal()">Avançar</button>
+    </div>
+  </div>
+
+  <div id="telaFinal" class="hidden">
+    <h2>Avalie o Game Totem</h2>
+    <div>
+      <span class="face" onclick="avaliar('ruim')">😡</span>
+      <span class="face" onclick="avaliar('regular')">😐</span>
+      <span class="face" onclick="avaliar('otimo')">😊</span>
+    </div>
+    <div id="finalizarContainer" class="hidden">
+      <button onclick="finalizar()">Finalizar</button>
+    </div>
+    <div id="mensagemFinal" class="info"></div>
+  </div>
+
+  <script>
+    let pontos = 0;
+    let nivel = 1;
+    let interagiuComJogos = false;
+
+    function iniciarJogo() {
+      document.getElementById("telaInicial").classList.add("hidden");
+      document.getElementById("telaJogo").classList.remove("hidden");
+    }
+
+    function atualizarInterface() {
+      document.getElementById("pontos").textContent = "Pontos: " + pontos;
+      document.getElementById("nivel").textContent = "Nível: " + nivel;
+    }
+
+    function jogarLixo(tipo) {
+      let feedback = "";
+      if (tipo === "correto") {
+        pontos += 10;
+        feedback = "Ótimo trabalho! Você descartou corretamente!";
+      } else if (tipo === "organico") {
+        pontos += 5;
+        feedback = "Boa! Lixo orgânico reconhecido.";
+      } else {
+        pontos -= 5;
+        feedback = "Ops! Lixo no lugar errado.";
+      }
+
+      if (pontos >= 90 && nivel < 5) {
+        nivel = 5;
+      } else if (pontos >= 60 && nivel < 3) {
+        nivel = 3;
+      } else if (pontos >= 30 && nivel < 2) {
+        nivel = 2;
+      }
+
+      atualizarInterface();
+      let mensagem = feedback;
+      if (nivel === 3) {
+        mensagem += "<br>Conquista liberada: Sua música favorita 🎵";
+      }
+      if (nivel === 5 && !interagiuComJogos) {
+        mensagem += "<br>Hora do Jogo!";
+        document.getElementById("jogosExtras").classList.remove("hidden");
+      }
+      document.getElementById("mensagem").innerHTML = mensagem;
+    }
+
+    function interagirJogo(jogo) {
+      alert("Você jogou: " + (jogo === 'caca' ? "Caça Lixo" : "Combine o Lixo"));
+      interagiuComJogos = true;
+      document.getElementById("btnAdesivo").classList.remove("hidden");
+    }
+
+    function mostrarAdesivos() {
+      document.getElementById("telaJogo").classList.add("hidden");
+      document.getElementById("telaAdesivos").classList.remove("hidden");
+    }
+
+    function adesivoSelecionado() {
+      alert("Parabéns! Você escolheu um adesivo 🎉");
+      document.getElementById("botoesAposAdesivo").classList.remove("hidden");
+    }
+
+    function reiniciarJogo() {
+      pontos = 0;
+      nivel = 1;
+      interagiuComJogos = false;
+
+      atualizarInterface();
+      document.getElementById("mensagem").textContent = "";
+      document.getElementById("jogosExtras").classList.add("hidden");
+      document.getElementById("btnAdesivo").classList.add("hidden");
+
+      document.getElementById("telaFinal").classList.add("hidden");
+      document.getElementById("telaAdesivos").classList.add("hidden");
+      document.getElementById("mensagemFinal").textContent = "";
+      document.getElementById("finalizarContainer").classList.add("hidden");
+      document.getElementById("telaInicial").classList.remove("hidden");
+    }
+
+    function mostrarTelaFinal() {
+      document.getElementById("telaAdesivos").classList.add("hidden");
+      document.getElementById("telaFinal").classList.remove("hidden");
+    }
+
+    function avaliar(nivel) {
+      document.getElementById("finalizarContainer").classList.remove("hidden");
+    }
+
+    function finalizar() {
+      document.getElementById("mensagemFinal").innerHTML = "Obrigada por jogar, até breve 😊";
+    }
+  </script>
+</body>
+</html>

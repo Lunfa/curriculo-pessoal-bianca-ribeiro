@@ -1,0 +1,273 @@
+
+body {
+    color: white;/*Muda a cor do texto*/
+    background-color: black;/*muda a cor do fundo*/
+    font-family: Georgia, 'Times New Roman', Times, serif;/*Muda a fonta da letra*/
+}
+/*Todos os codigos que haver repetições vai ter só 1 comentario explicando, servirá igualmente para todos! */
+ul {
+    display: flex;/*deixa os itens alinhados*/
+    justify-content: space-between;/*espaça igualmente*/
+    list-style-type: none;/*tira a bolinha do nome*/
+    align-items: center;
+    padding: 16px;/*espaçamento interno*/
+}  
+a{
+    color: aliceblue;/*da a cor do link*/
+    text-decoration: none;/*tira o sublinhado*/
+}
+header img {
+width: 165px;/*deixa o tamanho fixo*/
+height: 165px;/*deixa a imagem redonda*/
+border-radius: 50%;
+border: 5px solid gray;/*cria uma borda grossa e muda a cor da borda*/
+}
+
+.center {/*centraliza o conteudo dentro*/
+text-align: center;
+}
+ h1{/*h1 h2 h3 aqui no css vai mudar a cor, fonte esse comentario serve pras demais que aparecer no codigo*/
+    color: red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h2{
+    color: gray;
+}
+h3{
+    color: white;
+}
+nav a:hover {/*muda a cor ao passar o mouser em cima*/
+color: red;
+}
+footer img {/*footer é o rodapé*/
+    width: 40px;
+    height: 40px;
+
+}
+
+.fundo-animado{ /*vai colocar animação no fundo da pagina*/
+    position: fixed;
+    top: 20%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200px;
+
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation: moverFundo 50s linear infinite;
+    z-index: -1;
+    opacity: 0.6;/*intensidade das imagens */
+}
+.imagens {/*as imagens que tiver associadas as paginas vai combinar com a animação de fundo*/
+    display: flex;
+    width: fit-content;
+    animation: desfilar 50s linear infinite;
+}
+.imagens img{
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    object-fit: contain;
+   
+}
+@keyframes moverFundo{
+    0%{/*inico do movimento*/
+        transform: translateY(-50%) translateX(0);
+    }
+    100%{/*move horizontalmente para esquerda*/
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+
+.pagina-Projetos h1{/*todos os codigos que apresentar ponto no começo é para formatação separadamnete de cada pagina ex: .pagina-Formação h1 isso se aplica as demais linhas que tem o mesmo objetivo*/
+    color: aliceblue;
+    background-color: black;
+    font-family: 'Times New Roman', Times, serif;
+    color: green;
+   
+}
+
+
+.pagina-contatos h1{
+   color: aliceblue;
+   background-color: black;
+   color:blueviolet
+}
+.container{
+   padding: 0px 50px; 
+}
+
+.fundo-animado.pagina-contatos{
+    position: fixed;
+    top: 20%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200px;
+
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation: moverFundo 50s linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+.imagens {
+    display: flex;
+    width: fit-content;
+    animation: desfilar 50s linear infinite;
+}
+.imagens img{
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    object-fit: contain;
+}
+@keyframes moverFundo{
+    0%{
+        transform: translateY(-50%) translateX(0);
+    }
+    100%{
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+@keyframes moverFundo {
+  0% {
+    transform: translateY(-50%) translateX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(-50%);
+  }
+}
+
+.fundo-animado.Formação{
+    position: fixed;
+    top: 20%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200px;
+
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation: moverFundo 50s linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+.imagens {
+    display: flex;
+    width: fit-content;
+    animation: desfilar 50s linear infinite;
+}
+.imagens img{
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    object-fit: contain;
+}
+@keyframes moverFundo{
+    0%{
+        transform: translateY(-50%) translateX(0);
+    }
+    100%{
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+.pagina-Formação h1{
+    color: blue;
+}
+footer {
+    display: flex;
+    justify-content: center;
+}
+footer a {
+    margin: 20px;
+    text-align: center;
+}
+footer p{
+    margin-top: 2px;
+}
+.meu-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+  text-align: center;
+}
+.container-Formação{
+   padding: 0px 50px; 
+}
+.pagina-contatos header img{
+    border-radius: 50%;
+    border: solid blueviolet;
+}
+.pagina-Formação header img{
+    border-radius: 50%;
+    border: solid blue;
+}
+.pagina-Projetos header img{
+    border-radius: 50%;
+    border: solid greenyellow;
+}
+.fundo-animado.Projetos{
+    position: fixed;
+    top: 20%;
+    left: 0%;
+    transform: translateY(-50%);
+    width: 200%;
+    height: 200px;
+
+    background-repeat: repeat-x;
+    background-size: contain;
+    animation: moverFundo 50s linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+.imagens {
+    display: flex;
+    width: fit-content;
+    animation: desfilar 50s linear infinite;
+}
+.imagens img{
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    object-fit: contain;
+}
+@keyframes moverFundo{
+    0%{
+        transform: translateY(-50%) translateX(0);
+    }
+    100%{
+        transform: translateY(-50%) translateX(-50%);
+    }
+}
+.pagina-Projetos h2{
+    color: aliceblue;
+}
+.pagina-Projetos h3{
+    color: aliceblue;
+}
+ .center img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 50%;
+}
+
+.pagina-Projetos .center img:hover{
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px 5px greenyellow;
+}
+
+.pagina-contatos .center img:hover{/*animação na imagem de centro do site, passando o mouser em cima da efeito rotatorio e a borda brilha*/
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px 5px blueviolet;
+}
+.pagina-Formação .center img:hover{
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px 5px blue;
+}
+.center img:hover{
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px 5px white;
+}
