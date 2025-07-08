@@ -5,6 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Mim</title>
+    <script> // aqui chama o javaScript
+        const fixo = "Sobre mim |";// cria uma variavel que deixa o titulo fixo
+        let animado = "Salvee😎";// perimite que o titulo tenha animação 
+        let intervalo;
+        let ativo = true; //controla as animaçoes pra não rodarem ao mesmo tempo
+        let visivel = true;
+        let textoAusente = "Owww não sai do meu site🥺";// quando a pessoa sair da pagina vai ser exibido essa mensagem
+
+
+        function animarTitulo(){// responsavel por animar o titulo
+            if (!ativo) return;
+            if (visivel){
+                animado = animado.substring(1) + animado[0]
+                document.title = fixo + animado;// o texto fixo atualiza junto com a animação
+            } else{
+                textoAusente = textoAusente.substring(1) + textoAusente[0]
+                document.title = textoAusente;
+            }
+            intervalo = setTimeout(animarTitulo, 300);
+        }
+        animarTitulo();
+        document.addEventListener("visibilitychange", function(){// aqui é ele que sabe quando a pessoa saiu da pagina, ai ela atualiza pra mensagem de ausencia
+        if (document.hidden){
+            ativo = false;
+            clearTimeout(intervalo);// uma pausa entre as animações
+            visivel = false;
+            ativo = true;
+            animarTitulo();
+            //a questão dos if e else (falsos e verdadeiros) dependendo da interação do usuario cada um deles vai ter uma variavel atualizada
+
+        } else{
+            ativo= false;
+            clearTimeout(intervalo);
+            visivel = false;
+            ativo = true;
+            animarTitulo();
+         }
+          }
+        );
+
+    </script>
     <link rel="stylesheet" href="index.css"><!--Isso liga o html com o CSS-->
 </head>
 <body> <!-- Body:corpo do site, fica todo o codigo dentro dele-->
@@ -49,16 +90,16 @@
     </nav>
     <header>
         <div class="center">
-            <img src="./img/lp.jpg"> </img>
+            <img src="./img/lp.jpg"> </img><!--Src serve pra add imagens-->
         </div>
         <h1>Bianca Ribeiro</h1>
         
         <h2>Desenvolvedora Web e Sistemas</h2>
         <h3>Salve meliante, Satisfação de ter você visitando o meu site.
-            Me chamo Bianca Ribeiro Santos, tenho 20 anos nas costas e atualmente faço faculdade de ADS, pois tenho vontade de trabalhar programando em casa e criar meus propios sites criativos referente aos meus hobbies que vocês verão abaixo.
+            Me chamo Bianca Ribeiro Santos, tenho 20 anos nas costas e atualmente faço faculdade de ADS, pois tenho vontade de trabalhar programando em casa e criar meus própios sites criativos referente aos meus hobbies que vocês verão abaixo.
 
         </h3>
-        <br>
+        <br><!--quebra de linha-->
         <h1>
             HOBBIES:
         </h1>
@@ -83,7 +124,7 @@
             Me diz se um jogo não é bom?
             <p>
                 E a resposta é SIM!, e não só 1 mas varios deles, com temas e propostas diferentes. Os queridinhos que estão no topo da minha Tearlist são: Mobile Legends, Red Dead Redemption 2 e Litlle nightmares II
-            </p>
+            </p> <!--paragrafo-->
         </h3>
         <link real="stylesheet" href="index.css">
     </header>

@@ -4,6 +4,26 @@
 <head> <!--Os codigos que aparecer repetiçoes vai ser mostrato só um comentario explicando, se aplicando as demais repetiçoes iguais -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatos</title>
+    <script>// aqui chama o javaScript
+        const tituloPadrao = "Formação";
+        let textoAusente = "Owww não sai do meu site🥺";
+        let intervalo;
+        function animarTituloAusente(){
+            textoAusente = textoAusente.substring(1) + textoAusente[0];
+            document.title = textoAusente;
+            intervalo = setTimeout(animarTituloAusente, 300);
+        }
+        document.addEventListener("visibilitychange", function(){// aqui é ele que sabe quando a pessoa saiu da pagina, ai ela atualiza pra mensagem de ausencia
+            if(document.hidden){
+                animarTituloAusente();
+            }
+            else{
+                clearTimeout(intervalo);
+                document.title = tituloPadrao;
+            }
+        });
+        document.title = tituloPadrao;
+    </script>
      <link rel="stylesheet" href="index.css"> <!--Isso liga o html com o CSS-->
 </head>
 <body class="pagina-contatos">
